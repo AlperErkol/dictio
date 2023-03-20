@@ -1,13 +1,11 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import axios from "axios";
+import { IQuery } from "../../../type";
 
-type Data = {
-  name: string
-}
+const BASE_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+const getDictionaryResult = async ({ query }: IQuery) => {
+  const result = await axios.get(`${BASE_URL}/${query}`);
+  return result.data;
+};
+
+export { getDictionaryResult };

@@ -1,0 +1,9 @@
+.SearchBar {
+  flex: 1;
+  height: 3rem;
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
