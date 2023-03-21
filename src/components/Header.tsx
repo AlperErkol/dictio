@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className={styles.Header}>
       <Link href={"/"}>
-        <Image width={95} height={70} src={Logo} alt="Dict.io Logo" />
+        <Image priority={true} width={95} height={70} src={Logo} alt="Dict.io Logo" />
       </Link>
       <SearchBar />
       <DropdownMenu.Root>
@@ -21,13 +21,13 @@ const Header = () => {
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
             <DropdownMenu.Item className="DropdownMenuItem">
-              New Tab <div className="RightSlot">⌘+T</div>
+              Light
             </DropdownMenu.Item>
             <DropdownMenu.Item className="DropdownMenuItem">
-              New Window <div className="RightSlot">⌘+N</div>
+              Dark
             </DropdownMenu.Item>
-            <DropdownMenu.Item className="DropdownMenuItem" disabled>
-              New Private Window <div className="RightSlot">⇧+⌘+N</div>
+            <DropdownMenu.Item className="DropdownMenuItem">
+              System
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>

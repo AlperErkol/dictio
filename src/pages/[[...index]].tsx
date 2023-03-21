@@ -1,12 +1,15 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
+import { getDictionaryResult } from "./api/hello";
 import Header from "@/components/Header";
+import { GetServerSideProps } from "next/types";
+import { IQuery } from "../../type";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ data, alperer }: any) {
+  console.log(alperer);
   return (
     <>
       <Head>
@@ -18,8 +21,18 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.content}>
           <Header />
+          <h2 className="text-white text-lg">{data[0].word}</h2>
         </div>
       </main>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const alperer = context;
+  const selam: IQuery = {
+    query: "encourage",
+  };
+  const data = await getDictionaryResult(selam);
+  return { props: { data, alperer } };
+};
