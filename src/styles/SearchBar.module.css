@@ -1,9 +1,33 @@
 .SearchBar {
-  flex: 1;
+  width: 25rem;
   height: 3rem;
   font-size: 1.25rem;
   background: none;
   border: none;
   outline: none;
   padding: 0 10px;
+  background-color: #3b3b3b;
+  display: flex;
+  align-items: center;
+}
+
+.SearchBar > input {
+  flex: 1;
+  height: 100%;
+  background-color: none;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.SearchBar > input:focus {
+  outline: 0;
+}
+
+.SearchBar > button {
+  cursor: pointer;
+  background-color: transparent !important;
+  border: none;
+  outline: none;
 }

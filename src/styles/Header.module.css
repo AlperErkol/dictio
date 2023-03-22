@@ -6,3 +6,22 @@
   justify-content: space-between;
   border-bottom: 1px solid #a0a0a0;
 }
+
+.Logo {
+  transition: all 1000ms ease-in-out;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0px);
+    transform: scaleY(1);
+  }
+  50% {
+    transform: translateY(50px);
+    transform: scaleY(0.25);
+  }
+  60% {
+    transform: translateY(-150px);
+  }
+}
