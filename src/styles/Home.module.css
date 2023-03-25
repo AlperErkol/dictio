@@ -7,7 +7,7 @@
 }
 
 .content {
-  width: 900px;
+  width: var(--max-width);
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 3.5rem auto;
 }

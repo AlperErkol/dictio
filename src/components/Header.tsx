@@ -6,27 +6,28 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import SearchBar from "./SearchBar";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 import { CgScreen } from "react-icons/cg";
+import SearchBar2 from "./SearchBar";
 
-const Logo = require("../../public/dict-logo.png");
+const Logo = require("../../public/logo-dictio.svg");
 
 interface IProps {
   initialValue: string;
 }
 
-const Header:React.FC<IProps> = ({initialValue}) => {
+const Header: React.FC<IProps> = ({ initialValue }) => {
   return (
     <header className={styles.Header}>
       <Link href={"/"}>
         <Image
           className={styles.Logo}
           priority={true}
-          width={95}
-          height={95}
+          width={30}
+          height={30}
           src={Logo}
           alt="Dict.io Logo"
         />
       </Link>
-      <SearchBar initialValue={initialValue} />
+      <SearchBar />
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button className="IconButton" aria-label="Customise options">

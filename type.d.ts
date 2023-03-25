@@ -1,9 +1,9 @@
 interface IQuery {
   query: string;
 }
-
 interface IQueryError {
-  query?: string;
+  error: boolean;
+  errorMessage: string;
 }
 
 export { IQuery, IQueryError };

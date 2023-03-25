@@ -22,7 +22,8 @@ export default function Home({ data, error }: any) {
       <main className={styles.main}>
         <div className={styles.content}>
           <Header initialValue={initalQuery} />
-          <h2 className="text-5xl font-bold">{data[0].word}</h2>
+          {error && <p>error..</p>}
+          <h2 className="text-7xl font-bold">{data[0].word}</h2>
         </div>
       </main>
     </>
@@ -37,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let data = null;
 
   if (isContextHasQuery == undefined || null) {
-    initQuery.query = "dictionary";
+    initQuery.query = "fuck";
   } else {
     initQuery.query = isContextHasQuery.toString();
   }

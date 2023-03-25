@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --max-width: 1100px;
+  --max-width: 800px;
   --border-radius: 5px;
 
   /* @Colors */
   --primary-color: #121212;
-  --secondary-color: #00e9a3;
+  --tertiary-color: #00e9a3;
   --text-color: #ffffff;
   --border-color: #a0a0a0;
 }
