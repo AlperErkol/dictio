@@ -10,16 +10,11 @@ import SearchBar2 from "./SearchBar";
 
 const Logo = require("../../public/logo-dictio.svg");
 
-interface IProps {
-  initialValue: string;
-}
-
-const Header: React.FC<IProps> = ({ initialValue }) => {
+const Header = () => {
   return (
     <header className={styles.Header}>
       <Link href={"/"}>
         <Image
-          className={styles.Logo}
           priority={true}
           width={30}
           height={30}

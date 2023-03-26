@@ -1,16 +1,11 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import { getDictionaryResult } from "./api/hello";
+import { getDictionaryResult, WORD_OF_THE_DAY } from "./api/hello";
 import Header from "@/components/Header";
 import { GetServerSideProps } from "next/types";
 import { IQuery } from "../../type";
-import {useState} from "react";
 
 export default function Home({ data, error }: any) {
-  console.log(data);
-
-  const [initalQuery, setInitialQuery] = useState("dictionary");
-
   return (
     <>
       <Head>
@@ -21,9 +16,9 @@ export default function Home({ data, error }: any) {
       </Head>
       <main className={styles.main}>
         <div className={styles.content}>
-          <Header initialValue={initalQuery} />
-          {error && <p>error..</p>}
-          <h2 className="text-7xl font-bold">{data[0].word}</h2>
+          <Header />
+          {error && error}
+          {!error && <h2 className="text-7xl font-bold">{data[0].word}</h2>}
         </div>
       </main>
     </>
@@ -34,18 +29,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const isContextHasQuery = context.query.search;
   const initQuery: IQuery = { query: "" };
 
-  let error = false;
-  let data = null;
-
   if (isContextHasQuery == undefined || null) {
-    initQuery.query = "fuck";
+    initQuery.query = WORD_OF_THE_DAY;
   } else {
     initQuery.query = isContextHasQuery.toString();
   }
 
-  let response = await getDictionaryResult(initQuery);
-  if (response.status == 404) error = false;
-  else data = response.data;
-
-  return { props: { data, error } };
+  try {
+    const response = await getDictionaryResult(initQuery);
+    return {
+      props: {
+        data: response.data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        error: "An error occured..",
+      },
+    };
+  }
 };
