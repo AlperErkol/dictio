@@ -4,8 +4,11 @@ import { getDictionaryResult, WORD_OF_THE_DAY } from "./api/hello";
 import Header from "@/components/Header";
 import { GetServerSideProps } from "next/types";
 import { IQuery } from "../../type";
+import Dictio from "@/components/Dictio";
+import Error from "@/components/Error";
 
 export default function Home({ data, error }: any) {
+  const word = data[0];
   return (
     <>
       <Head>
@@ -17,8 +20,7 @@ export default function Home({ data, error }: any) {
       <main className={styles.main}>
         <div className={styles.content}>
           <Header />
-          {error && error}
-          {!error && <h2 className="text-7xl font-bold">{data[0].word}</h2>}
+          {error ? <Error /> : <Dictio data={word} />}
         </div>
       </main>
     </>
