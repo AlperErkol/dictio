@@ -2,6 +2,7 @@ import React from "react";
 import Badge from "./Badge";
 import Line from "./Line";
 import Link from "next/link";
+import UtilInformation from "./UtilInformation";
 
 interface IProps {
   data: any;
@@ -35,24 +36,10 @@ const DictioBody: React.FC<IProps> = ({ data }) => {
               ))}
             </ul>
             {item.synonyms.length > 0 && (
-              <div>
-                <span className="underline block mb-2">Synonyms</span>
-                {item.synonyms.map((synonym: string) => (
-                  <Link href={`/?search=${synonym}`}>
-                    <Badge text={synonym} />
-                  </Link>
-                ))}
-              </div>
+              <UtilInformation title="Synonyms" data={item.synonyms} />
             )}
             {item.antonyms.length > 0 && (
-              <div>
-                <span className="underline block mb-2">Antonyms</span>
-                {item.antonyms.map((antonym: string) => (
-                  <Link href={`/?search=${antonym}`}>
-                    <Badge text={antonym} />
-                  </Link>
-                ))}
-              </div>
+              <UtilInformation title="Antonyms" data={item.antonyms} />
             )}
           </div>
         </div>

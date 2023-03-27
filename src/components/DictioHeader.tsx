@@ -1,22 +1,65 @@
-import React from "react";
-import { BsPlayFill } from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+import { BsPlayCircle } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 interface IProps {
-  data: any;
+  word: string;
+  phonetics: any[];
 }
 
-const DictioHeader: React.FC<IProps> = ({ data }) => {
+interface IPhoneticObject {
+  phonetic: string;
+  audioUrl: string;
+}
+
+const DictioHeader: React.FC<IProps> = ({ word, phonetics }) => {
+  const router = useRouter();
+
+  const [isAudioLoaded, setIsAudioLoaded] = useState<any>();
+
+  const phoneticObject: IPhoneticObject = {
+    phonetic: "",
+    audioUrl: "",
+  };
+
+  for (let index = 0; index < phonetics.length; index++) {
+    if (
+      phonetics[index].text &&
+      phonetics[index].text !== "" &&
+      phonetics[index].audio !== ""
+    ) {
+      phoneticObject.phonetic = phonetics[index].text;
+      phoneticObject.audioUrl = phonetics[index].audio;
+      break;
+    }
+  }
+  useEffect(() => {
+    let audio = new Audio(phoneticObject.audioUrl);
+    setIsAudioLoaded(audio);
+  }, [router.query.search]);
+
+  const start = () => {
+    isAudioLoaded.play();
+  };
+
   return (
-    <div className="flex justify-between items-center my-12">
-      <div className="flex flex-col">
-        <h2 className="text-6xl font-bold">{data.word}</h2>
-        <span className="text-tertiary-color text-xl">
-          {data.phonetic ? data.phonetic : data.phonetics[1].text}
-        </span>
+    <div className="my-8">
+      <div className="flex justify-between items-center">
+        <h2 className="text-6xl font-bold mb-4">{word}</h2>
+        {isAudioLoaded && (
+          <div>
+            <button
+              onClick={() => start()}
+              className="cursor-pointer w-14 h-14 rounded-full flex justify-center items-center"
+            >
+              <BsPlayCircle size={56} color="#00e9a3" />
+            </button>
+          </div>
+        )}
       </div>
-      <div className="cursor-pointer w-20 h-20 bg-red-500 rounded-full flex justify-center items-center">
-        <BsPlayFill size={56} color="#00e9a3" />
-      </div>
+      <span className="text-tertiary-color text-xl">
+        {phoneticObject.phonetic}
+      </span>
     </div>
   );
 };

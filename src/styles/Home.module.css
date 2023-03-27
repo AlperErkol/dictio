@@ -10,4 +10,12 @@
   width: var(--max-width);
   min-height: 100vh;
   margin: 3.5rem auto;
+  padding: 0rem 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .content {
+    width: 100%;
+    margin: 2rem auto;
+  }
 }

@@ -10,18 +10,23 @@ interface IProps {
 
 const Dictio: React.FC<IProps> = ({ data }) => {
   console.log(data);
+  const word = data.word;
+  const phonetics = data.phonetics;
+  const meanings = data.meanings;
+  const sourceUrl = data.sourceUrls[0];
+
   return (
     <div>
-      <DictioHeader data={data} />
-      <DictioBody data={data.meanings} />
+      <DictioHeader word={word} phonetics={phonetics} />
+      <DictioBody data={meanings} />
       <Line />
       <div className="mt-2">
         <span className="text-sm text-text-muted-color">Source : </span>
         <Link
           className="text-sm italic hover:text-tertiary-color transition-all"
-          href={""}
+          href={sourceUrl}
         >
-          {data.sourceUrls[0]}
+          {sourceUrl}
         </Link>
       </div>
     </div>

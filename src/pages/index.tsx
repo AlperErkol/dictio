@@ -8,7 +8,6 @@ import Dictio from "@/components/Dictio";
 import Error from "@/components/Error";
 
 export default function Home({ data, error }: any) {
-  const word = data[0];
   return (
     <>
       <Head>
@@ -20,7 +19,7 @@ export default function Home({ data, error }: any) {
       <main className={styles.main}>
         <div className={styles.content}>
           <Header />
-          {error ? <Error /> : <Dictio data={word} />}
+          {error ? <Error /> : <Dictio data={data[0]} />}
         </div>
       </main>
     </>

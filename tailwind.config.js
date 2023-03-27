@@ -14,6 +14,7 @@ module.exports = {
         "text-color": "var(--text-color)",
         "text-muted-color": "var(--text-muted-color)",
         "border-color": "var(--border-color)",
+        "input-color": "var(--input-color)",
       },
     },
   },
