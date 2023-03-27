@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Badge from "./Badge";
 
 interface IProps {
@@ -14,8 +13,8 @@ const UtilInformation: React.FC<IProps> = ({ title, data }) => {
         {title}
       </span>
       <div>
-        {data.map((item: string) => (
-          <Badge text={item} />
+        {data.map((item: string, idx: number) => (
+          <Badge key={idx} text={item} />
         ))}
       </div>
     </div>

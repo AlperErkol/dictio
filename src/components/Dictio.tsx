@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const Dictio: React.FC<IProps> = ({ data }) => {
-  console.log(data);
   const word = data.word;
   const phonetics = data.phonetics;
   const meanings = data.meanings;

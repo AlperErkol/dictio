@@ -11,8 +11,8 @@ interface IProps {
 const DictioBody: React.FC<IProps> = ({ data }) => {
   return (
     <div>
-      {data.map((item: any) => (
-        <div className="mb-4">
+      {data.map((item: any, idx: number) => (
+        <div key={idx} className="mb-4">
           <div className="flex items-center mb-2">
             <span className="mr-2 italic font-semibold text-2xl">
               {item.partOfSpeech}
@@ -24,8 +24,8 @@ const DictioBody: React.FC<IProps> = ({ data }) => {
               Meanings
             </span>
             <ul className="list-disc marker:text-tertiary-color ml-6">
-              {item.definitions.map((item: any) => (
-                <li className="mb-4">
+              {item.definitions.map((item: any, idx: number) => (
+                <li key={idx} className="mb-4">
                   <span className="text-text-color">{item.definition}</span>
                   {item.example && (
                     <q className="block text-text-muted-color text-lg">
